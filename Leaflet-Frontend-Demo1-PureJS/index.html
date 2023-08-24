@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="UTF-8" />
+
+      <title>CodePen - LEAFLET</title>
+
+      <link rel="canonical" href="https://codepen.io/bzozoo/pen/KKbweVy" />
+      <link
+         rel="stylesheet"
+         href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+         integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+         crossorigin=""
+      />
+
+      <!-- Make sure you put this AFTER Leaflet's CSS -->
+      <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+
+      <style>
+         body {
+            margin: 0px;
+         }
+
+         h3 {
+            margin: 3px;
+         }
+
+         #map {
+            position: absolute;
+            bottom: 0;
+            top: 0;
+            left: 0;
+            right: 0;
+         }
+
+         .half-opacity {
+            opacity: 0.5;
+         }
+      </style>
+   </head>
+
+   <body>
+      <div id="map"></div>
+
+      <script id="rendered-js">
+         const map = L.map("map").setView([51.51, -0.1044], 14);
+
+         const layer = L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {}).addTo(map);
+
+         function markerTemplate() {
+            return `
+		<div>
+			<h3>Gratulálok!</h3>
+			A nyereméyned ez a fantasztikus gyümölcstál<br />
+			<img src="https://i.imgur.com/czCbZEN.jpeg" width="500px">
+		</div>
+	`;
+         }
+
+         const mainMarker = L.marker();
+
+         map.on("zoomend", function () {
+            console.log(map.getZoom());
+            if (map.getZoom() >= 16) {
+               mainMarker.setLatLng([51.51, -0.1044]);
+               mainMarker.bindPopup(markerTemplate(), {
+                  className: "half-opacity",
+                  maxWidth: 1000,
+               });
+               map.addLayer(mainMarker);
+               mainMarker.openPopup();
+            } else {
+               map.removeLayer(mainMarker);
+            }
+         });
+      </script>
+   </body>
+</html>
