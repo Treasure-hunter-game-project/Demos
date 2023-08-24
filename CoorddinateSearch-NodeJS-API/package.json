@@ -1,0 +1,22 @@
+{
+  "name": "express-rest-api",
+  "version": "1.0.0",
+  "description": "A complete REST API built with Express and Node.js. ",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "nodemon src/server.js"
+  },
+  "dependencies": {
+    "cors": "2.8.5",
+    "express": "4.17.1"
+  },
+  "devDependencies": {
+    "nodemon": "1.18.4"
+  },
+  "keywords": [
+    "api",
+    "express",
+    "node",
+    "rest"
+  ]
+}
