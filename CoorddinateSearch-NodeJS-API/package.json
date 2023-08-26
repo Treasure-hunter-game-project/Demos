@@ -1,17 +1,18 @@
 {
-  "name": "express-rest-api",
-  "version": "1.0.0",
-  "description": "A complete REST API built with Express and Node.js. ",
+  "name": "coordinate",
+  "version": "0.0.2",
+  "description": "A coordinate REST API built with Express and Node.js. ",
+  "homepage": "https://ddfz8h-3000.csb.app",
   "main": "src/index.js",
   "scripts": {
     "start": "nodemon src/server.js"
   },
   "dependencies": {
-    "cors": "2.8.5",
-    "express": "4.17.1"
+    "cors": "^2.8.5",
+    "express": "^4.18.2"
   },
   "devDependencies": {
-    "nodemon": "1.18.4"
+    "nodemon": "^3.0.1"
   },
   "keywords": [
     "api",

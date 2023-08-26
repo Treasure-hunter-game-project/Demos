@@ -1,6 +1,7 @@
 const service = require('./coordinate.service');
 
 function welcomeMessage(req, res, next) {
+	console.log('TESZT');
 	const message = service.welcomeMessage();
 	return res.json(message);
 }

@@ -1,10 +1,16 @@
 const express = require('express');
+const app = express();
 const cors = require('cors');
-const coordinate_router = require('./Feature/Coordinate/coordinate.router');
-const messageAt404 = require('./Feature/PageNotFound/pagenotfound.controller');
+
+//Constants
 const Routes = require('./constants/routes');
 
-const app = express();
+//Routers
+const approot_router = require('./Feature/AppRoot/approot.router');
+const coordinate_router = require('./Feature/Coordinate/coordinate.router');
+
+//Controllers
+const messageAt404 = require('./Feature/PageNotFound/pagenotfound.controller');
 
 app.use(express.json());
 app.set('json spaces', 2);
@@ -12,6 +18,10 @@ app.disable('etag');
 app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 
+// path /
+app.use(Routes.ROOT, approot_router);
+
+// path /coordinate
 app.use(Routes.COORDINATE, coordinate_router);
 
 // Handle unknown routes
